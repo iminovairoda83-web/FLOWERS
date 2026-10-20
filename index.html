@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Shop — Цветочный магазин</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff9f7;
+            color: #333;
+        }
+
+        header {
+            background: #f6dfe4;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #a63f61;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #633344;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 75px 20px;
+            background: linear-gradient(135deg, #f9e3e8, #fff4ec);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #a63f61;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #b94d70;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .btn:hover {
+            background: #913653;
+        }
+
+        .section {
+            padding: 55px 8%;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            color: #a63f61;
+            margin-bottom: 30px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px #00000010;
+            padding-bottom: 22px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .flower {
+            height: 190px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            background: #fcebef;
+        }
+
+        .card h3 {
+            margin: 18px 8px 10px;
+            color: #713c50;
+        }
+
+        .card p {
+            color: #777;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            font-size: 23px;
+            font-weight: bold;
+            color: #b94d70;
+            margin-bottom: 16px;
+        }
+
+        .card .btn {
+            margin: 0 8px;
+        }
+
+        .cart {
+            background: #f8e5e9;
+            border-radius: 18px;
+            padding: 25px;
+            max-width: 650px;
+            margin: auto;
+            text-align: left;
+        }
+
+        .cart h3 {
+            color: #a63f61;
+            margin-bottom: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #e7c5cf;
+        }
+
+        .remove {
+            border: none;
+            background: transparent;
+            color: #a63f61;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .total {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .contact {
+            background: #fff0f2;
+        }
+
+        .contact p {
+            margin: 12px;
+            font-size: 17px;
+        }
+
+        footer {
+            background: #a63f61;
+            color: white;
+            text-align: center;
+            padding: 22px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav a {
+                margin: 5px 8px;
+                display: inline-block;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 40px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌸 Flower Shop</div>
+
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#catalog">Цветы</a>
+        <a href="#cart">Корзина</a>
+        <a href="#contact">Контакты</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <h1>Цветы с любовью 🌷</h1>
+    <p>Дарите красивые моменты своим близким!</p>
+    <a href="#catalog" class="btn">Выбрать букет</a>
+</section>
+
+<section class="section" id="catalog">
+    <h2>Наши цветы 💐</h2>
+
+    <div class="products">
+
+        <div class="card">
+            <div class="flower">🌹</div>
+            <h3>Красные розы</h3>
+            <p>Букет из 7 роз</p>
+            <div class="price">1 500 сом</div>
+            <button class="btn" onclick="addToCart('Красные розы', 1500)">
+                Заказать
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="flower">🌷</div>
+            <h3>Нежные тюльпаны</h3>
+            <p>Букет из 11 тюльпанов</p>
+            <div class="price">1 200 сом</div>
+            <button class="btn" onclick="addToCart('Тюльпаны', 1200)">
+                Заказать
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="flower">🌻</div>
+            <h3>Яркие подсолнухи</h3>
+            <p>Букет из 5 цветов</p>
+            <div class="price">1 000 сом</div>
+            <button class="btn" onclick="addToCart('Подсолнухи', 1000)">
+                Заказать
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="flower">💐</div>
+            <h3>Микс-букет</h3>
+            <p>Нежные цветы разных оттенков</p>
+            <div class="price">2 500 сом</div>
+            <button class="btn" onclick="addToCart('Микс-букет', 2500)">
+                Заказать
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="flower">🌸</div>
+            <h3>Розовые розы</h3>
+            <p>Букет из 15 роз</p>
+            <div class="price">3 000 сом</div>
+            <button class="btn" onclick="addToCart('Розовые розы', 3000)">
+                Заказать
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="flower">🌼</div>
+            <h3>Ромашки</h3>
+            <p>Нежный летний букет</p>
+            <div class="price">900 сом</div>
+            <button class="btn" onclick="addToCart('Ромашки', 900)">
+                Заказать
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section class="section" id="cart">
+    <h2>🛒 Ваша корзина</h2>
+
+    <div class="cart">
+        <h3>Выбранные букеты</h3>
+        <div id="cart-items">Корзина пока пустая.</div>
+        <div class="total">
+            Итого: <span id="total">0</span> сом
+        </div>
+        <button class="btn" onclick="checkout()">
+            Оформить заказ
+        </button>
+    </div>
+</section>
+
+<section class="section contact" id="contact">
+    <h2>Свяжитесь с нами 💌</h2>
+    <p>📍 Адрес: Бишкек, Кыргызстан</p>
+    <p>📞 Телефон: +996 700 123 456</p>
+    <p>🕒 Работаем ежедневно: 09:00–21:00</p>
+    <p>🌷 Доставка цветов для ваших любимых!</p>
+</section>
+
+<footer>
+    <p>© 2026 Flower Shop. Все права защищены.</p>
+</footer>
+
+<script>
+    const cart = [];
+
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        renderCart();
+        alert(name + ' добавлены в корзину!');
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        renderCart();
+    }
+
+    function renderCart() {
+        const items = document.getElementById('cart-items');
+        const total = document.getElementById('total');
+
+        if (cart.length === 0) {
+            items.textContent = 'Корзина пока пустая.';
+            total.textContent = '0';
+            return;
+        }
+
+        items.replaceChildren();
+
+        cart.forEach((item, index) => {
+            const row = document.createElement('div');
+            row.className = 'cart-item';
+
+            const name = document.createElement('span');
+            name.textContent = item.name + ' — ' +
+                item.price.toLocaleString('ru-RU') + ' сом';
+
+            const remove = document.createElement('button');
+            remove.className = 'remove';
+            remove.textContent = '✕';
+            remove.setAttribute('aria-label', 'Удалить ' + item.name);
+            remove.onclick = () => removeFromCart(index);
+
+            row.append(name, remove);
+            items.appendChild(row);
+        });
+
+        const sum = cart.reduce((total, item) => total + item.price, 0);
+        document.getElementById('total').textContent =
+            sum.toLocaleString('ru-RU');
+    }
+
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Сначала добавьте цветы в корзину!');
+            return;
+        }
+
+        const order = cart.map(item =>
+            item.name + ' — ' + item.price + ' сом'
+        ).join('\n');
+
+        const sum = cart.reduce((total, item) => total + item.price, 0);
+
+        const message =
+            'Здравствуйте! Хочу заказать:\n' + order +
+            '\nИтого: ' + sum + ' сом';
+
+        const phone = '996700123456';
+        const url = 'https://wa.me/' + phone +
+            '?text=' + encodeURIComponent(message);
+
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>
